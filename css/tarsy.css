@@ -1,0 +1,13 @@
+html {
+  height: 80%;
+}
+body, table, tbody, td {
+  height: 100%;
+  width: 100%;
+}
+textarea {
+  height: 100%;
+}
+#blocklyArea {
+  height: 99%;
+}

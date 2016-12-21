@@ -4,20 +4,173 @@
         <script src="js/react.js"></script>
         <script src="js/react-dom.js"></script>
         <script src="js/browser.js"></script>
-        <title>Tarsy</title>
+        <script src="blockly/blockly_compressed.js"></script>
+        <script src="blockly/blocks_compressed.js"></script>
+        <script src="blockly/javascript_compressed.js"></script>
+        <script src="blockly/msg/js/en.js"></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="css/tarsy.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+        <title>Coding with Tarsy</title>
     </head>
     <body>
-        <div id='react-container'></div>
-        <script type="text/babel">
+      <div class="container-fluid" role="main" style="height: 100%">
+      <div id="reactDiv"></div>       
+      <table class="table table-bordered">
+   <thead>
+     <tr>
+       <th>
+         <div class="btn-group" data-toggle="buttons">
+         <label class="btn btn-primary">
+           <input type="radio" name="options" id="clrOption" autocomplete="off"> Clear Workspace  
+         </label>
+         </div>
+       </th>
+       <th>
+         <div class="btn-group" data-toggle="buttons">
+           <label class="btn btn-primary active">
+             <input type="radio" name="options" id="jscOption" autocomplete="off" checked> JavaScript 
+           </label>
+           <label class="btn btn-primary">
+             <input type="radio" name="options" id="ardOption" autocomplete="off"> Arduino 
+           </label>
+           <label class="btn btn-primary">
+             <input type="radio" name="options" id="gpiOption" autocomplete="off"> GrovePi 
+           </label>
+         </div>
+       </th>
+     </tr>
+   </thead>
+   <tbody>
+      <tr>
+         <td class="container-fluid col-md-8" id="blocklyArea">
+            <div id="blocklyDiv"></div>
+         </td>
+         <td class="container-fluid col-md-4">
+            <textarea class="form-control" name="sourceArea" id="sourceArea" 
+            rows="28%" readonly>Your code will show up here</textarea>
+         </td>
+      </tr>
+   </tbody>
+</table>
+</div>
+
+<xml id="toolbox" style="display: none">
+   <!--category name="Components">
+        <block type="epc_led"></block>
+        <block type="epc_buzzer"></block>
+        <block type="epc_button"></block>
+        <block type="epc_irsensor"></block>
+        <block type="epc_analogrotation"></block>
+        <block type="epc_leftdcmotor">
+            <value name="SPEED">
+                <block type="math_number">
+                    <field name="NUM">50</field>
+                </block>
+            </value>
+        </block>
+        <block type="epc_rightdcmotor">
+            <value name="SPEED">
+                <block type="math_number">
+                    <field name="NUM">50</field>
+                </block>
+            </value>
+        </block>
+        <block type="epc_servo">
+            <value name="DEGREE">
+                <block type="math_number">
+                    <field name="NUM">0</field>
+                </block>
+            </value>
+        </block>
+        <block type="epc_joystickX"></block>
+        <block type="epc_joystickY"></block>
+        <block type="epc_lightsensor"></block>
+        <block type="epc_ultrasonic"></block>
+    </category-->
+    <category name="Control">
+        <block type="controls_if"></block>
+        <block type="controls_whileUntil"></block>
+        <!--block type="controls_delay">
+            <value name="DELAY_TIME">
+                <block type="math_number">
+                    <field name="NUM">1000</field>
+                </block>
+            </value>
+        </block-->
+        <block type="controls_for">
+            <value name="FROM">
+                <block type="math_number">
+                    <field name="NUM">1</field>
+                </block>
+            </value>
+            <value name="TO">
+                <block type="math_number">
+                    <field name="NUM">10</field>
+                </block>
+            </value>
+            <value name="BY">
+                <block type="math_number">
+                    <field name="NUM">1</field>
+                </block>
+            </value>
+        </block>
+        <block type="controls_flow_statements"></block>
+    </category>
+    <category name="Logic">
+        <block type="logic_compare"></block>
+        <block type="logic_operation"></block>
+        <block type="logic_negate"></block>
+        <block type="logic_boolean"></block>
+        <block type="logic_null"></block>
+    </category>
+    <category name="Math">
+        <block type="math_number"></block>
+        <block type="math_random_int"></block>
+        <!--block type="math_map">
+            <value name="DMAX">
+                <block type="math_number">
+                    <field name="NUM">180</field>
+                </block>
+            </value>
+        </block-->
+        <block type="math_arithmetic"></block>
+    </category>
+    <category name="Serial">
+        <!--block type="serial_print"></block-->
+        <block type="text"></block>
+    </category>
+    <!--category name="Pin Functions">
+        <block type="pin_functions_digital_write"></block>
+        <block type="pin_functions_digital_read"></block>
+        <block type="pin_functions_analog_write">
+            <value name="NUM">
+                <block type="math_number">
+                    <field name="NUM">0</field>
+                </block>
+            </value>
+        </block>
+        <block type="pin_functions_analog_read"></block>
+    </category-->
+    <category name="Variables">
+        <block type="variables_set"></block>
+        <block type="variables_get"></block>
+    </category>
+    <category name="Functions" custom="PROCEDURE"></category>
+</xml>
+        <script src="js/tarsy.js"></script>
+                <script type="text/babel">
             const MyComponent = () => {
                 return <div>
-                    <h1>Coding with Tarsy</h1>
+                    <h1><a href="/">Coding with Tarsy</a></h1>   
                     <p>Anonymous function...</p>
                     </div>
             }
 
             ReactDOM.render(<MyComponent />,
-                document.getElementById('react-container'))
+                document.getElementById('reactDiv'))
         </script>
     </body>
 </html>
